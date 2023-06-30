@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="40dp"
+    app:cardCornerRadius="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/productImage"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:contentDescription="@string/product_image"
+            android:background="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/productPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/lime_green"
+            app:layout_constraintTop_toBottomOf="@id/productImage"
+            app:layout_constraintBottom_toTopOf="@+id/productName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productPrice"
+            app:layout_constraintBottom_toTopOf="@id/setCount"/>
+
+        <EditText
+            android:id="@+id/setCount"
+            android:layout_width="180dp"
+            android:layout_height="48dp"
+            android:hint="@string/set_num_items_buy"
+            android:gravity="center"
+            android:inputType="number"
+            android:textSize="13.5sp"
+            android:autofillHints="@string/set_num_items_buy"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buyBtn"
+            app:layout_constraintStart_toEndOf="@id/sellBtn"
+            app:layout_constraintTop_toBottomOf="@+id/productName" />
+
+        <Button
+            android:id="@+id/sellBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/sell"
+            app:layout_constraintTop_toBottomOf="@+id/productName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/setCount"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <Button
+            android:id="@+id/buyBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/buy"
+            app:layout_constraintTop_toBottomOf="@+id/productName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/setCount"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

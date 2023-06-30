@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Spend_money</string>
+    <string name="product_image">Product Image</string>
+    <string name="set_num_items_buy">Set the number of items</string>
+    <string name="sell">Sell</string>
+    <string name="buy">Buy</string>
+    <string name="dollar">$ %1$s</string>
+    <string name="money_to_spend">$ %1$s</string>
+</resources>
