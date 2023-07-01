@@ -54,22 +54,13 @@
             android:hint="@string/set_num_items_buy"
             android:gravity="center"
             android:inputType="number"
-            android:textSize="13.5sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:autofillHints="@string/set_num_items_buy"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buyBtn"
-            app:layout_constraintStart_toEndOf="@id/sellBtn"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/productName" />
-
-        <Button
-            android:id="@+id/sellBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="@string/sell"
-            app:layout_constraintTop_toBottomOf="@+id/productName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/setCount"
-            app:layout_constraintStart_toStartOf="parent"/>
 
         <Button
             android:id="@+id/buyBtn"

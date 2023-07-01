@@ -28,6 +28,10 @@ class SpendOnProducts : AppCompatActivity() {
 
 
     private fun productView() {
+        //Creating object of Money bank class
+        val moneyBank = MoneyBank(230000000000)
+        val tv = findViewById<TextView>(R.id.fullMoney)
+
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -39,12 +43,22 @@ class SpendOnProducts : AppCompatActivity() {
             override fun onBuyBtnClick(product: Product, editText: EditText) {
                 val itemCount = editText.text.toString()
                 Log.d("MyTag","Buying Item - Position=$product - ItemCount = $itemCount")
+                Log.d("Money",moneyBank.getMoney())
+
+                moneyBank.buyProduct(product,itemCount)
+                tv.text = resources.getString(R.string.money_to_spend,moneyBank.getMoney())
+                editText.setTextColor(resources.getColor(R.color.dark_green,resources.newTheme()))
+
+                Log.d("Money",moneyBank.getMoney())
             }
 
-            override fun onSellBtnClick(product: Product, editText: EditText) {
-                val itemCount = editText.text.toString()
-                Log.d("MyTag", "Selling item - Position=$product - ItemCount = $itemCount")
-            }
+//            override fun onSellBtnClick(product: Product, editText: EditText) {
+//                Log.d("MyTag", "Selling item - Position=$product - ItemCount = ")
+//
+//                moneyBank.sellProduct(product, editText)
+//                tv.text = resources.getString(R.string.money_to_spend,moneyBank.getMoney())
+//                editText.setTextColor(resources.getColor(R.color.danger_red,resources.newTheme()))
+//            }
         })
         recyclerView.adapter = productAdapter
     }

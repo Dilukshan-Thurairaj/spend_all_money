@@ -22,7 +22,6 @@ class ProductAdapter(
         val productName: TextView = itemView.findViewById(R.id.productName)
         val productPrice: TextView = itemView.findViewById(R.id.productPrice)
         private val buyBtn = itemView.findViewById<Button>(R.id.buyBtn)
-        private val sellBtn = itemView.findViewById<Button>(R.id.sellBtn)
         private val editText = itemView.findViewById<EditText>(R.id.setCount)
 
         init {
@@ -33,12 +32,12 @@ class ProductAdapter(
                 }
             }
 
-            sellBtn.setOnClickListener {
-                val position = adapterPosition
-                if(position != RecyclerView.NO_POSITION){
-                    btnClickListener.onSellBtnClick(productList[position], editText)
-                }
-            }
+//            sellBtn.setOnClickListener {
+//                val position = adapterPosition
+//                if(position != RecyclerView.NO_POSITION){
+//                    btnClickListener.onSellBtnClick(productList[position], editText)
+//                }
+//            }
         }
     }
 
