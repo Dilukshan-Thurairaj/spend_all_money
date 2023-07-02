@@ -3,9 +3,10 @@ package com.example.spend_money
 import android.util.Log
 
 
-class MoneyBank(var totalMoney: Long) {
+class MoneyBank(private var totalMoney: Long) {
 
     private val productMap = hashMapOf<String,String>()
+    private var round = 0
     //private val fixedAmount = 230000000000
 
     //Set Money inside the bank
@@ -14,8 +15,21 @@ class MoneyBank(var totalMoney: Long) {
 //    }
 
     //Get Money from the bank
-    fun getMoney(): String {
-        return String.format("%,d",totalMoney)
+    fun getMoney(): Long {
+        return totalMoney
+    }
+
+    fun getRound(): Int{
+        return round
+    }
+
+    fun resetRound(editTextMap: HashMap<Int, String>) {
+        totalMoney = 230000000000
+        productMap.clear()
+        round++
+        editTextMap.clear()
+        Log.d("reset","Work")
+
     }
 
     fun buyProduct(product: Product, itemCount: String) {

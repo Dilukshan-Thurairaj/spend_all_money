@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.json.JSONArray
@@ -40,16 +41,25 @@ class SpendOnProducts : AppCompatActivity() {
         addProductsToList()
 
         productAdapter = ProductAdapter(productList, object : OnBtnClickListener {
-            override fun onBuyBtnClick(product: Product, editText: EditText) {
+            override fun onBuyBtnClick(product: Product, editText: EditText, editTextMap: HashMap<Int, String>) {
+
                 val itemCount = editText.text.toString()
-                Log.d("MyTag","Buying Item - Position=$product - ItemCount = $itemCount")
-                Log.d("Money",moneyBank.getMoney())
 
-                moneyBank.buyProduct(product,itemCount)
-                tv.text = resources.getString(R.string.money_to_spend,moneyBank.getMoney())
-                editText.setTextColor(resources.getColor(R.color.dark_green,resources.newTheme()))
+                if(itemCount.isNotEmpty()) {
+                    Log.d("MyTag", "Buying Item - Position= - ItemCount = $editText")
+                    Log.d("Money", moneyBank.getMoney().toString())
 
-                Log.d("Money",moneyBank.getMoney())
+                    moneyBank.buyProduct(product, itemCount)
+                    if(moneyBank.getMoney() < 0){
+                        moneyBank.resetRound(editTextMap)
+                    }
+                    tv.text = resources.getString(R.string.money_to_spend, String.format("%,d",moneyBank.getMoney()))
+                    Log.d("Round", moneyBank.getRound().toString())
+                    Log.d("Money", moneyBank.getMoney().toString())
+                }
+                else{
+                    Toast.makeText(this@SpendOnProducts,"PLEASE SET NUMBER OF ITEMS",Toast.LENGTH_SHORT).show()
+                }
             }
 
 //            override fun onSellBtnClick(product: Product, editText: EditText) {
@@ -82,7 +92,9 @@ class SpendOnProducts : AppCompatActivity() {
             val productImage = product["image"] as String
 
             productList.add(
-                Product(name = productName, price = productPrice, image = productImage)
+                Product(name = productName,
+                    price = productPrice,
+                    image = productImage)
             )
         }
     }

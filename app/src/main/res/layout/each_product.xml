@@ -64,9 +64,10 @@
 
         <Button
             android:id="@+id/buyBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="50dp"
             android:text="@string/buy"
+            android:backgroundTint="@color/kelly_green"
             app:layout_constraintTop_toBottomOf="@+id/productName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
