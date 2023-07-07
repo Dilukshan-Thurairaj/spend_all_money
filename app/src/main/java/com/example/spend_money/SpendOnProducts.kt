@@ -3,9 +3,8 @@ package com.example.spend_money
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.view.Gravity
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.json.JSONArray
@@ -50,9 +49,19 @@ class SpendOnProducts : AppCompatActivity() {
                     Log.d("Money", moneyBank.getMoney().toString())
 
                     moneyBank.buyProduct(product, itemCount)
+                    if (moneyBank.getMoney() == 0L){
+                        val layout = layoutInflater.inflate(R.layout.victory_popup,findViewById(R.id.spendMoneyLayout),false)
+                        val width = LinearLayout.LayoutParams.MATCH_PARENT
+                        val height = LinearLayout.LayoutParams.WRAP_CONTENT
+
+                        val victoryPopUp = PopupWindow(layout,width,height)
+
+                        victoryPopUp.showAtLocation(layout, Gravity.CENTER,0,100)
+                    }
                     if(moneyBank.getMoney() < 0){
                         moneyBank.resetRound(editTextMap)
                     }
+
                     tv.text = resources.getString(R.string.money_to_spend, String.format("%,d",moneyBank.getMoney()))
                     Log.d("Round", moneyBank.getRound().toString())
                     Log.d("Money", moneyBank.getMoney().toString())
